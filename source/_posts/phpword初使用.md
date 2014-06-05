@@ -1,5 +1,6 @@
 title: PHPWord初使用
 date: 2014-05-21 16:34:57
+categories: PHP
 tags: PHP
 ---
 最近项目中使用到导出网页内容到word功能，使用php内置函数也能实现导出，但是样式比较单一，于是找到一个开源的工具 PHPWord，研究了一番，比较强大，这里介绍下使用；

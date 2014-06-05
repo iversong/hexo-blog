@@ -95,4 +95,4 @@ deploy:
   type: github
   repo: git@gitcafe.com:iverson/iverson.git
   branch: gitcafe-pages
-  message: songliang add
+  message: songliang commited in home
