@@ -5,8 +5,11 @@ tags: [生活,随笔]
 ---
 　　端午节和女友在杭州度过，第一次体验到了南方人民对于传统民俗节日的热爱；那份人人参与，齐心协力赛龙舟的场景深深把我震撼了，这让生长于北方的我感到很新鲜，涨了见识。
 
-　　![赛龙舟](http://iversong.qiniudn.com/duanwuIMG_1289.JPG)
-　　![赛龙舟图片](http://iversong.qiniudn.com/duanwuIMG_1293.JPG) 
+　　![齐心协力](http://iversong.qiniudn.com/duanwuIMG_1289.JPG?imageView/2/w/800/q/85)
+
+<!-- more -->
+
+　　![奋勇向前](http://iversong.qiniudn.com/duanwuIMG_1293.JPG?imageView/2/w/800/q/85) 
 
 　　看到他们在水上愉快的玩耍，这让坐在岸边的我羡慕不已，甚至有种冲动驱使着我参与其中，也许那种感觉只有身临其境才可以感受的到吧！
 
