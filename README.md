@@ -1,6 +1,8 @@
 hexo-blog
 =========
 
-hexo个人静态博客
+hexo打造个人博客
+
+欢迎访问
 
 [Iversong's Blog](http://iversong.com)
