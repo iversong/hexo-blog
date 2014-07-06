@@ -21,5 +21,3 @@
 ## 工作经历
 
 + <strong>旺店精灵</strong> <strong>2012-2014</strong><br>  <a href="http://www.autobloglink.com">www.autobloglink.com</a><br> 淘宝开放平台第二大服务卖家软件旺店精灵，在旧版基础上完成精品化改造，全新设计界面，功能操作简化，提升用户体验，并且不断增加新功能，功能覆盖所有卖家需求；目前付费用户达到5w。
-
-+ <strong>Perl 程序员应该知道的事</strong> <strong>2013</strong><br>  <a href="http://perl.linuxtoy.org">perl.linuxtoy.org</a><br>  翻译并增补 Andy Lester 所撰写的 Perl 101 一书，这本书以食谱形式来介绍 Perl 语言编程。
