@@ -29,4 +29,5 @@ git pull
 
 ### changelog
 > 新增 swiftype站内搜索 https://swiftype.com
+
 > light主题修改支持swiftype搜索；
