@@ -90,6 +90,10 @@ plugins:
 sitemap:
     path: sitemap.xml
 
+# Swiftype站内搜索
+swift_search: 
+  enable: true
+
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy: 
