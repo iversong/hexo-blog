@@ -7,7 +7,7 @@ hexo打造个人博客
 
 [Iversong's Blog](http://iversong.com)
 
-## 当前repo不包含正在使用theme/light，需手动更新
+## 当前已发布正在使用主题theme/light，以下命令获取主题新特性，配置挺多，不建议从作者仓库更新覆盖！
 
 ## Install
 
