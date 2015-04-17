@@ -5,8 +5,8 @@
 # Site
 title: Iversong's Blog
 subtitle: Choose a life of action not one of ostentation
-description: 我是Iversong 这是我的个人博客 关注互联网,互联网产品,发表技术相关,生活相关文章,欢迎访问！
-keywords: 互联网,互联网金融,电子商务,IT技术
+description: "我是Iversong 这是我的个人博客 关注互联网 互联网产品 发表技术相关 生活相关文章 欢迎访问！"
+keywords: "互联网 互联网金融 电子商务 IT技术"
 author: Iversong
 email: songliangking@gmail.com
 language: zh-CN
@@ -36,15 +36,15 @@ multi_thread: true
 filename_case: 0
 render_drafts: false
 post_asset_folder: false
-highlight:
+highlight: 
   enable: true
   line_number: true
-  tab_replace:
+  tab_replace: 
 
 # Category & Tag
 default_category: uncategorized
-category_map:
-tag_map:
+category_map: 
+tag_map: 
 
 # Archives
 ## 2: Enable pagination
@@ -76,7 +76,7 @@ per_page: 5
 pagination_dir: page
 
 # Disqus
-disqus_shortname:
+disqus_shortname: 
 
 # Extensions
 ## Plugins: https://github.com/tommy351/hexo/wiki/Plugins
@@ -100,4 +100,4 @@ deploy:
   type: github
   repo: git@gitcafe.com:iverson/iverson.git
   branch: gitcafe-pages
-  message: songliang add new article
+  message: "songliang add new article"
