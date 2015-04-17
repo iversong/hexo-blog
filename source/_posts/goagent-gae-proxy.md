@@ -30,7 +30,7 @@ goAgent是一个基于Google Appengine的，全面兼容IE，FireFox，chrome的
 
 简单普及一下什么是[Google App Engine(GAE)](http://baike.baidu.com/link?url=vJRrmZkBc3JKiUTR6UESz2FywgHlhhnfbjc42MlfiGLRXmiuDlyzW0OI73hbJqSygO4KPii5wHb-ASYJD0Wqa_)，就是和国内的 Baidu App Engine(BAE)，新浪的Sina App Engine(SAE)，阿里的Aliyun Cloud Engine(ACE)类似的应用托管环境。
 
-如何申请[Google App Engine](https://appengine.google.com/)并创建appid，[（点这里查看教程）](http://wiki.geekfans.com/article/keji/20140827/306.html); 到这一步各位看官或许会郁闷了，尼玛没翻墙怎么登录https://appengine.google.com/，先别激动～～，奉上另外一个基于GoAgent和GAE appid的集成工具 [**XX-Net**](https://github.com/XX-net/XX-Net)，内置了公共appid，动态更新Google ip，公共appid只是限制了墙外视频的观看，其它网站浏览不受影响，然后去申请自己的appid填入配置就可以搞定一切了。
+如何申请[Google App Engine](https://appengine.google.com/)并创建appid，[（点这里查看教程）](http://wiki.geekfans.com/article/keji/20140827/306.html); 到这一步各位看官或许会郁闷了，尼玛没翻墙怎么登录[GAE](https://appengine.google.com/)，先别激动～～，奉上另外一个基于GoAgent和GAE appid的集成工具 [**XX-Net**](https://github.com/XX-net/XX-Net)，内置了公共appid，动态更新Google ip，公共appid只是限制了墙外视频的观看，其它网站浏览不受影响，然后去申请自己的appid填入配置就可以搞定一切了。
 
 ### 配置Goagent并部署到Google App Engine(GAE)###
 
@@ -51,7 +51,7 @@ appid = appid1|appid2|appid3
 
 ###设置浏览器代理###
 
-	只提供chrome和firefox浏览器设置，IE设置自行搜索，不建议使用IE代理
+	-------------只提供chrome和firefox浏览器设置，IE设置自行搜索，不建议使用IE代理------------------
 
 1.  chrome浏览器代理：地址栏输入chrome://extensions/后按回车，打开扩展管理页，将local文件夹中的SwitchyOmega.crx拖拽到该页面之后点击确定即可安装。安装之后点击Proxy的图标->选项->导入导出，选择local下的"SwitchyOptions.bak"文件。确认导入配置即可。
 2.  firefox浏览器代理：[教程在这里](http://www.cnblogs.com/coolicer/p/3519635.html)。
@@ -61,6 +61,6 @@ appid = appid1|appid2|appid3
 
 **新的问题来了，GWF手段用尽不让你出去啊，大量封杀google数据中心IP也使得Goagent变得不稳定了；怎么办呢，我擦来，不给你来点猛料，你不知道哥有多大潜力～～！！**
 
-+ gogo-tester2貌似已经很难找到Ip了；
++ [gogo-tester](https://code.google.com/p/gogo-tester/)经测试已经很难找到可用Ip了；
 + 强大的 [GOGO Tester自带好IP版](http://nicevpncdn.sourceforge.net/GoGo%20Tester%20%E8%87%AA%E5%B8%A6%E5%A5%BDip%E7%89%88.exe)出现了，下载后放到你的local文件夹下，点击随机测试，生成几十个IP，全选右键->应用->选中IP到用户配置文件,会自动生成proxy.user.ini，然后重新运行goagent.exe，完美解决；缺点是无法自动更新google ip，需要定期执行寻找ip导入配置；如此看来，**XX-NET**动态更新Google ip倒是很方便，快去试试吧！
 
