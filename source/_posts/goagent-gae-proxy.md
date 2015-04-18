@@ -59,7 +59,7 @@ appid = appid1|appid2|appid3
 以上设置完成就可以Happy的上网了！
 
 
-**新的问题来了，GWF手段用尽不让你出去啊，大量封杀google数据中心IP也使得Goagent变得不稳定了；怎么办呢，我擦来，不给你来点猛料，你不知道哥有多大潜力～～！！**
+**新的问题来了，GFW手段用尽不让你出去啊，大量封杀google数据中心IP也使得Goagent变得不稳定了；怎么办呢，我擦来，不给你来点猛料，你不知道哥有多大潜力～～！！**
 
 + [gogo-tester](https://code.google.com/p/gogo-tester/)经测试已经很难找到可用Ip了；
 + 强大的 [GOGO Tester自带好IP版](http://nicevpncdn.sourceforge.net/GoGo%20Tester%20%E8%87%AA%E5%B8%A6%E5%A5%BDip%E7%89%88.exe)出现了，下载后放到你的local文件夹下，点击随机测试，生成几十个IP，全选右键->应用->选中IP到用户配置文件,会自动生成proxy.user.ini，然后重新运行goagent.exe，完美解决；缺点是无法自动更新google ip，需要定期执行寻找ip导入配置；如此看来，**XX-NET**动态更新Google ip倒是很方便，快去试试吧！
