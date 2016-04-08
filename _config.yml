@@ -85,8 +85,6 @@ theme: light
 exclude_generator:
 
 # plugins
-plugins:
-- hexo-generator-sitemap
 sitemap:
     path: sitemap.xml
 
@@ -97,7 +95,7 @@ swift_search:
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy: 
-  type: github
-  repo: git@gitcafe.com:iverson/iverson.git
-  branch: gitcafe-pages
+  type: git
+  repo: git@git.coding.net:songliang/songliang.git
+  branch: coding-pages
   message: "songliang add new article"
