@@ -6,6 +6,7 @@ COPY . /usr/src/app
 WORKDIR /usr/src/app
 
 # Install dependences
-RUN npm install
+RUN npm install -g hexo-cli \
+	&& npm install
 
 CMD [ "node" ]
