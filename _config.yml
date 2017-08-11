@@ -96,6 +96,7 @@ swift_search:
 ## Docs: http://hexo.io/docs/deployment.html
 deploy: 
   type: git
-  repo: git@git.coding.net:songliang/songliang.git
-  branch: coding-pages
+  repo: 
+    coding: git@git.coding.net:songliang/songliang.git,coding-pages
+    github: git@github.com:iversong/hexo-blog.git,github-pages
   message: "songliang add new article"
