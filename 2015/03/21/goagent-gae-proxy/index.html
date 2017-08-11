@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="e59iH93PEC" />
+  
+  <title>Goagent+GAE+插件代理方式科学上网 | Iversong&#39;s 个人日志</title>
+  <meta name="author" content="Iversong">
+  
+  <meta name="description" content="我是Iversong 这是我的个人博客 关注互联网 互联网产品 发表技术相关 生活相关文章 欢迎访问！">
+  
+  
+  <meta name="keywords" content="Goagent 科学上网 GAE">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Goagent+GAE+插件代理方式科学上网"/>
+  <meta property="og:site_name" content="Iversong&#39;s 个人日志"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Iversong&#39;s 个人日志" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Iversong&#39;s 个人日志</a></h1>
+  <h2><a href="/">Choose a life of action not one of ostentation</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">文章列表</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-03-21T07:23:24.000Z"><a href="/2015/03/21/goagent-gae-proxy/">Mar 21 2015</a></time>
+      
+      
+  
+    <h1 class="title">Goagent+GAE+插件代理方式科学上网</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>之前写过一篇文章，介绍google font拖垮网站访问速度的解决方法以及如何<strong>科学上网</strong>的简单方式，贴了几个Google数据中心的IP段，购买VPN等，没有啥干货；现在就来介绍下免费的技术解决方案，贴出来分享给有需要的朋友。</p>
+<h3 id="Goagent-GAE-SwitchyOmega"><a href="#Goagent-GAE-SwitchyOmega" class="headerlink" title="Goagent+GAE+SwitchyOmega"></a>Goagent+GAE+SwitchyOmega</h3><h3 id="什么是goagent？"><a href="#什么是goagent？" class="headerlink" title="什么是goagent？"></a>什么是goagent？</h3><p>goAgent是一个基于Google Appengine的，全面兼容IE，FireFox，chrome的代理工具，使用Python和Google App EngineSDK编写，程序可以在Windows，Mac，Linux，Android，iPod，Touch，iPhone，iPad，webOS，OpenWrt，Maemo上使用。使用的是美国加利福尼亚州山景城Google数据中心IP段。</p>
+<p>个人感觉，使用goagent为chrome做插件进行科学上网，相对于其他使用VPN等全局代理而言，优点在于：</p>
+<ol>
+<li>免费；</li>
+<li>非全局。</li>
+</ol>
+<p>第一点就不用解释了。第二点是指对于使用qq、玩国服游戏等等这些非浏览器内的网络应用，同时又不需要代理操作时，goagent正好可以满足只在浏览器内运行的要求。</p>
+<a id="more"></a>
+<p>###首先从Google App Engine申请google appid###</p>
+<p>简单普及一下什么是<a href="http://baike.baidu.com/link?url=vJRrmZkBc3JKiUTR6UESz2FywgHlhhnfbjc42MlfiGLRXmiuDlyzW0OI73hbJqSygO4KPii5wHb-ASYJD0Wqa_" target="_blank" rel="external">Google App Engine(GAE)</a>，就是和国内的 Baidu App Engine(BAE)，新浪的Sina App Engine(SAE)，阿里的Aliyun Cloud Engine(ACE)类似的应用托管环境。</p>
+<p>如何申请<a href="https://appengine.google.com/" target="_blank" rel="external">Google App Engine</a>并创建appid，<a href="http://wiki.geekfans.com/article/keji/20140827/306.html" target="_blank" rel="external">（点这里查看教程）</a>; 到这一步各位看官或许会郁闷了，尼玛没翻墙怎么登录<a href="https://appengine.google.com/" target="_blank" rel="external">GAE</a>，先别激动～～，奉上另外一个基于GoAgent和GAE appid的集成工具 <a href="https://github.com/XX-net/XX-Net" target="_blank" rel="external"><strong>XX-Net</strong></a>，内置了公共appid，动态更新Google ip，公共appid只是限制了墙外视频的观看，其它网站浏览不受影响，然后去申请自己的appid填入配置就可以搞定一切了。</p>
+<h3 id="配置Goagent并部署到Google-App-Engine-GAE"><a href="#配置Goagent并部署到Google-App-Engine-GAE" class="headerlink" title="配置Goagent并部署到Google App Engine(GAE)"></a>配置Goagent并部署到Google App Engine(GAE)</h3><pre><code>-------------如果上一步中大家觉得XX-Net好用，可以在github上给个star，然后忽略下面的内容-------------
+</code></pre><ol>
+<li>下载<a href="https://github.com/goagent/goagent" target="_blank" rel="external">Goagent</a>解压到任意位置；</li>
+<li><p>进入解压目录找到local文件夹，编辑里面的proxy.ini文件，把其中的appid = goagent中的goagent改成你申请的应用名，多个应用名使用<code>|</code>隔开。例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[gae]</div><div class="line">enable = <span class="number">1</span></div><div class="line">appid = appid1|appid2|appid3</div></pre></td></tr></table></figure>
+</li>
+<li><p>右键管理员权限运行goagent.exe，保持打开状态；</p>
+</li>
+<li>双击sever文件夹下的uplaod.bat，然后输入你上步创建的appid（同时上传多appid在appid之间用 | 隔开,一次只能上传同一个谷歌帐户下的appid）填完按回车。根据提示填你的谷歌帐户邮箱地址，填完按回车。根据提示填你的谷歌帐户密码(注意：如果开启了两步验证，密码应为16位的应用程序专用密码而非谷歌帐户密码，否则会出现AttributeError: can’t set attribute错误），填完按回车。</li>
+<li>导入证书lacal下的CA.crt文件，安装到“受信任的根证书颁发机构”；</li>
+<li>重新管理员权限运行local文件夹中的goagent.exe，代理就设置成功了</li>
+</ol>
+<p>###设置浏览器代理###</p>
+<pre><code>-------------只提供chrome和firefox浏览器设置，IE设置自行搜索，不建议使用IE代理------------------
+</code></pre><ol>
+<li>chrome浏览器代理：地址栏输入chrome://extensions/后按回车，打开扩展管理页，将local文件夹中的SwitchyOmega.crx拖拽到该页面之后点击确定即可安装。安装之后点击Proxy的图标-&gt;选项-&gt;导入导出，选择local下的”SwitchyOptions.bak”文件。确认导入配置即可。</li>
+<li>firefox浏览器代理：<a href="http://www.cnblogs.com/coolicer/p/3519635.html" target="_blank" rel="external">教程在这里</a>。</li>
+</ol>
+<p>以上设置完成就可以Happy的上网了！</p>
+<p><strong>新的问题来了，GFW手段用尽不让你出去啊，大量封杀google数据中心IP也使得Goagent变得不稳定了；怎么办呢，我擦来，不给你来点猛料，你不知道哥有多大潜力～～！！</strong></p>
+<ul>
+<li><a href="https://code.google.com/p/gogo-tester/" target="_blank" rel="external">gogo-tester</a>经测试已经很难找到可用Ip了；</li>
+<li>强大的 <a href="http://nicevpncdn.sourceforge.net/GoGo%20Tester%20%E8%87%AA%E5%B8%A6%E5%A5%BDip%E7%89%88.exe" target="_blank" rel="external">GOGO Tester自带好IP版</a>出现了，下载后放到你的local文件夹下，点击随机测试，生成几十个IP，全选右键-&gt;应用-&gt;选中IP到用户配置文件,会自动生成proxy.user.ini，然后重新运行goagent.exe，完美解决；缺点是无法自动更新google ip，需要定期执行寻找ip导入配置；如此看来，<strong>XX-NET</strong>动态更新Google ip倒是很方便，快去试试吧！</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/IT杂谈/">IT杂谈</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/porxy/">porxy</a>, <a href="/tags/科学上网/">科学上网</a>, <a href="/tags/代理/">代理</a>
+  </div>
+
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="/search/index.html" method="get" accept-charset="utf-8">
+    <input type="text" id="st-search-inpu" name="q" results="0" placeholder="search">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/IT杂谈/">IT杂谈</a><small>2</small></li>
+  
+    <li><a href="/categories/PHP/">PHP</a><small>1</small></li>
+  
+    <li><a href="/categories/产品运营/">产品运营</a><small>1</small></li>
+  
+    <li><a href="/categories/前端技术/">前端技术</a><small>4</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/生活/">生活</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/VPN代理/" style="font-size: 10px;">VPN代理</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/porxy/" style="font-size: 10px;">porxy</a> <a href="/tags/reactjs/" style="font-size: 10px;">reactjs</a> <a href="/tags/vagrant/" style="font-size: 10px;">vagrant</a> <a href="/tags/vps-运维/" style="font-size: 10px;">vps 运维</a> <a href="/tags/上网/" style="font-size: 10px;">上网</a> <a href="/tags/产品/" style="font-size: 10px;">产品</a> <a href="/tags/代理/" style="font-size: 10px;">代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/运营/" style="font-size: 10px;">运营</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2489146553&verifier=a63d6d67&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2017 Iversong , Powered by <a href="http://hexo.io/" target="_blank" title="hexo"> hexo </a>,
+  Theme of &nbsp; <a href="https://github.com/hexojs/hexo-theme-light" target="_blank" title="light">light</a>,
+  Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+  
+  <span>&nbsp;|&nbsp;</span>
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000455927'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1000455927%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+  _st('install','KmytTzhuzaxbwuTHpoeX');
+</script>
+
+  <a href="https://github.com/iversong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+</body>
+</html>

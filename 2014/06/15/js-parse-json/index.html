@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="e59iH93PEC" />
+  
+  <title>js请求服务器返回JSON解析问题 | Iversong&#39;s 个人日志</title>
+  <meta name="author" content="Iversong">
+  
+  <meta name="description" content="我是Iversong 这是我的个人博客 关注互联网 互联网产品 发表技术相关 生活相关文章 欢迎访问！">
+  
+  
+  <meta name="keywords" content="互联网 互联网金融 电子商务 IT技术">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="js请求服务器返回JSON解析问题"/>
+  <meta property="og:site_name" content="Iversong&#39;s 个人日志"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Iversong&#39;s 个人日志" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Iversong&#39;s 个人日志</a></h1>
+  <h2><a href="/">Choose a life of action not one of ostentation</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">文章列表</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-06-15T14:32:00.000Z"><a href="/2014/06/15/js-parse-json/">Jun 15 2014</a></time>
+      
+      
+  
+    <h1 class="title">js请求服务器返回JSON解析问题</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>体制问题，在目前这家公司一直搞后端，好久没写js没搞前后端交互了，还真有点想念啊，想念那两年开着多个浏览器挨个调试的日子。</p>
+<p>少扯两句，话入正题，今天朋友问一js解析问题，索性记录一下js通过 HTTP 请求加载远程数据，以及数据解析的相关问题。</p>
+<p>无论是同源请求实现异步操作，还是跨域请求获取第三方数据，js端请求加载远程数据通常是通过底层Ajax实现的，一般我们都是使用jQuery框架来直接请求，这里有<code>$.ajax(),$.post(),$.get(),$.getJson()</code>；个人比较喜欢用的是<code>$.ajax()</code>，因为它可以通过参数实现其它三种的所有功能，当然了，这里可以根据个人爱好和使用场景自由选择；这几个函数的详细区别(<a href="http://www.w3school.com.cn/jquery/jquery_ref_ajax.asp" target="_blank" rel="external">教程这里</a>)查看；</p>
+<p><strong>重点来了：</strong>两种解析方式</p>
+<a id="more"></a>
+<h2 id="一、使用eval-函数。"><a href="#一、使用eval-函数。" class="headerlink" title="一、使用eval()函数。"></a>一、使用eval()函数。</h2><p>1、当使用<code>$.get() or $.post() or $.ajax()</code>的时候没有指定 <strong>dataType</strong>(预期服务器响应数据类型)，虽然jquery可以智能判断，但是当返回数据是以json字符串呈现时，就需要做一次对象化处理；</p>
+<ul>
+<li>如果这段字符串符合标准的json格式，可以使用jquery的<code>$.parseJSON()</code>直接解析为json对象。</li>
+<li>如果返回的json字符串不符合标准json格式，那就只能使用<code>eval()</code>函数解析为json对象了。  </li>
+</ul>
+<p><strong>例子：</strong> 打开谷歌或火狐，F12开发者模式下如下调试<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; <span class="keyword">var</span> jsonStr = <span class="string">'&#123;name:"Iversong",age:24&#125;'</span>; <span class="comment">//定义一个非标准json字符串</span></div><div class="line">  <span class="literal">undefined</span></div><div class="line">  </div><div class="line">&gt; <span class="built_in">console</span>.info(<span class="built_in">eval</span>(<span class="string">"+jsonStr+"</span>));  <span class="comment">//eval("+data+")方式打印</span></div><div class="line">  <span class="built_in">SyntaxError</span>: Unexpected end <span class="keyword">of</span> input <span class="comment">//报错：输入意外结束</span></div><div class="line">  </div><div class="line">&gt; <span class="built_in">console</span>.info(<span class="built_in">eval</span>(<span class="string">"("</span>+jsonStr+<span class="string">")"</span>)); <span class="comment">//eval("("+data+")")方式打印</span></div><div class="line">  <span class="built_in">Object</span> &#123;<span class="attr">name</span>: <span class="string">"Iversong"</span>, <span class="attr">age</span>: <span class="number">24</span>&#125; <span class="comment">//返回正确的json对象</span></div></pre></td></tr></table></figure></p>
+<p><strong>问题：</strong> <code>eval(&quot;(&quot;+data+&quot;)&quot;);</code>为什么要这么使用才正确返回json对象？？<br><strong>答案：</strong> 由于json是以”{}”的方式来开始以及结束的，在JS中，它会被当成一个语句块来处理，所以必须强制性的将它转换成一种表达式。<br>    <code>eval(&quot;({})&quot;);</code>加上圆括号的目的是迫使eval函数在处理JavaScript代码的时候强制将括号内的表达式（expression）转化为对象，而不是作为语句（statement）来执行。举一个例子，例如对象字面量{}，如若不加外层的括号，那么eval会将大括号识别为JavaScript代码块的开始和结束标记，那么{}将会被认为是执行了一句空语句。所以下面两个执行结果是不同的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">eval</span>(<span class="string">"&#123;&#125;"</span>); <span class="comment">// return undefined</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">eval</span>(<span class="string">"(&#123;&#125;)"</span>);<span class="comment">// return object[Object]</span></div></pre></td></tr></table></figure></p>
+<p>2、当指定 <strong>dataType</strong>参数值为 <code>&#39;json&#39;</code> 或者直接使用<code>$.getJSON()</code>方法请求服务器时，是不需要对返回的数据进行解析的，因为这时候得到的结果已经是json对象了，只需直接调用该对象即可；</p>
+<p><strong>例如：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//实例1</span></div><div class="line">$.getJSON(<span class="string">"test.js"</span>, &#123; <span class="attr">name</span>: <span class="string">"John"</span>, <span class="attr">time</span>: <span class="string">"2pm"</span> &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"JSON Data: "</span> + json.users[<span class="number">3</span>].name);</div><div class="line">&#125;);</div><div class="line"><span class="comment">//实例2</span></div><div class="line">$.post(<span class="string">"http://www.phpzixue.cn/"</span>,&#123;<span class="attr">param</span>:<span class="string">"xxx"</span>&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(data.itemName);</div><div class="line">    &#125;,</div><div class="line">    <span class="string">"json"</span></div><div class="line">);</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="二、使用Function对象来进行返回解析"><a href="#二、使用Function对象来进行返回解析" class="headerlink" title="二、使用Function对象来进行返回解析"></a>二、使用Function对象来进行返回解析</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var json=&apos;&#123;&quot;name&quot;:&quot;Iversong&quot;,&quot;age&quot;:24&#125;&apos;;</div><div class="line">myJson =(new Function(&quot;good&quot;,&quot;return &quot;+json))(); //Function方式解析</div><div class="line"></div><div class="line">console.log(myJson);</div><div class="line">return Object &#123;name: &quot;Iversong&quot;, age: 24&#125;  //返回对象</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/前端技术/">前端技术</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/js/">js</a>, <a href="/tags/Ajax/">Ajax</a>, <a href="/tags/json/">json</a>
+  </div>
+
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="/search/index.html" method="get" accept-charset="utf-8">
+    <input type="text" id="st-search-inpu" name="q" results="0" placeholder="search">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/IT杂谈/">IT杂谈</a><small>2</small></li>
+  
+    <li><a href="/categories/PHP/">PHP</a><small>1</small></li>
+  
+    <li><a href="/categories/产品运营/">产品运营</a><small>1</small></li>
+  
+    <li><a href="/categories/前端技术/">前端技术</a><small>4</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/生活/">生活</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/VPN代理/" style="font-size: 10px;">VPN代理</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/porxy/" style="font-size: 10px;">porxy</a> <a href="/tags/reactjs/" style="font-size: 10px;">reactjs</a> <a href="/tags/vagrant/" style="font-size: 10px;">vagrant</a> <a href="/tags/vps-运维/" style="font-size: 10px;">vps 运维</a> <a href="/tags/上网/" style="font-size: 10px;">上网</a> <a href="/tags/产品/" style="font-size: 10px;">产品</a> <a href="/tags/代理/" style="font-size: 10px;">代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/运营/" style="font-size: 10px;">运营</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2489146553&verifier=a63d6d67&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2017 Iversong , Powered by <a href="http://hexo.io/" target="_blank" title="hexo"> hexo </a>,
+  Theme of &nbsp; <a href="https://github.com/hexojs/hexo-theme-light" target="_blank" title="light">light</a>,
+  Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+  
+  <span>&nbsp;|&nbsp;</span>
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000455927'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1000455927%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+  _st('install','KmytTzhuzaxbwuTHpoeX');
+</script>
+
+  <a href="https://github.com/iversong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+</body>
+</html>

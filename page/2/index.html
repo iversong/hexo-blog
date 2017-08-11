@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="e59iH93PEC" />
+  
+  <title>第 2 页 | Iversong&#39;s 个人日志</title>
+  <meta name="author" content="Iversong">
+  
+  <meta name="description" content="我是Iversong 这是我的个人博客 关注互联网 互联网产品 发表技术相关 生活相关文章 欢迎访问！">
+  
+  
+  <meta name="keywords" content="互联网 互联网金融 电子商务 IT技术">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Iversong&#39;s 个人日志"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Iversong&#39;s 个人日志" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Iversong&#39;s 个人日志</a></h1>
+  <h2><a href="/">Choose a life of action not one of ostentation</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">文章列表</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-03-21T07:23:24.000Z"><a href="/2015/03/21/goagent-gae-proxy/">Mar 21 2015</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/03/21/goagent-gae-proxy/">Goagent+GAE+插件代理方式科学上网</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>之前写过一篇文章，介绍google font拖垮网站访问速度的解决方法以及如何<strong>科学上网</strong>的简单方式，贴了几个Google数据中心的IP段，购买VPN等，没有啥干货；现在就来介绍下免费的技术解决方案，贴出来分享给有需要的朋友。</p>
+<h3 id="Goagent-GAE-SwitchyOmega"><a href="#Goagent-GAE-SwitchyOmega" class="headerlink" title="Goagent+GAE+SwitchyOmega"></a>Goagent+GAE+SwitchyOmega</h3><h3 id="什么是goagent？"><a href="#什么是goagent？" class="headerlink" title="什么是goagent？"></a>什么是goagent？</h3><p>goAgent是一个基于Google Appengine的，全面兼容IE，FireFox，chrome的代理工具，使用Python和Google App EngineSDK编写，程序可以在Windows，Mac，Linux，Android，iPod，Touch，iPhone，iPad，webOS，OpenWrt，Maemo上使用。使用的是美国加利福尼亚州山景城Google数据中心IP段。</p>
+<p>个人感觉，使用goagent为chrome做插件进行科学上网，相对于其他使用VPN等全局代理而言，优点在于：</p>
+<ol>
+<li>免费；</li>
+<li>非全局。</li>
+</ol>
+<p>第一点就不用解释了。第二点是指对于使用qq、玩国服游戏等等这些非浏览器内的网络应用，同时又不需要代理操作时，goagent正好可以满足只在浏览器内运行的要求。</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2015/03/21/goagent-gae-proxy/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-06-22T13:01:26.000Z"><a href="/2014/06/22/grunt/">Jun 22 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/06/22/grunt/">Grunt：任务自动管理工具</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>在Javascript的开发过程中，经常会遇到一些重复性的任务，比如合并文件、压缩代码、检查语法错误、将Sass代码转成CSS代码等等。通常，我们需要使用不同的工具，来完成不同的任务，既重复劳动又非常耗时。Grunt就是为了解决这个问题而发明的工具，可以帮助我们自动管理和运行各种任务。</p>
+<p>简单说，Grunt是一个自动任务运行器，会按照预先设定的顺序自动运行一系列的任务。这可以简化工作流程，减轻重复性工作带来的负担。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Grunt基于Node.js，安装之前要先安装Node.js，然后运行下面的命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">sudo npm install grunt-cli -g</div></pre></td></tr></table></figure>
+<p>grunt-cli表示安装的是grunt的命令行界面，参数g表示全局安装。</p>
+<p>Grunt使用模块结构，除了安装命令行界面以外，还要根据需要安装相应的模块。这些模块应该采用局部安装，因为不同项目可能需要同一个模块的不同版本。</p>
+<p>首先，在项目的根目录下，创建一个文本文件package.json，指定当前项目所需的模块。下面就是一个例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"my-project-name"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"0.1.0"</span>,</div><div class="line">  <span class="string">"author"</span>: <span class="string">"Your Name"</span>,</div><div class="line">  <span class="string">"devDependencies"</span>: &#123;</div><div class="line">    <span class="string">"grunt"</span>: <span class="string">"0.x.x"</span>,</div><div class="line">    <span class="string">"grunt-contrib-jshint"</span>: <span class="string">"*"</span>,</div><div class="line">    <span class="string">"grunt-contrib-concat"</span>: <span class="string">"~0.1.1"</span>,</div><div class="line">    <span class="string">"grunt-contrib-uglify"</span>: <span class="string">"~0.1.0"</span>,</div><div class="line">    <span class="string">"grunt-contrib-watch"</span>: <span class="string">"~0.1.4"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面这个package.json文件中，除了注明项目的名称和版本以外，还在devDependencies属性中指定了项目依赖的grunt模块和版本：grunt核心模块为最新的0.x.x版，jshint插件为最新版本，concat插件不低于0.1.1版，uglify插件不低于0.1.0版，watch插件不低于0.1.4版。</p>
+<p>然后，在项目的根目录下运行下面的命令，这些插件就会被自动安装在node_modules子目录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">npm install</div></pre></td></tr></table></figure>
+<p>上面这种方法是针对已有package.json的情况。如果想要自动生成package.json文件，可以使用npm init命令，按照屏幕提示回答所需模块的名称和版本即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">npm init</div></pre></td></tr></table></figure>
+<p>如果已有的package.json文件不包括Grunt模块，可以在直接安装Grunt模块的时候，加上–save-dev参数，该模块就会自动被加入package.json文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">npm install &lt;module&gt; --save-dev</div></pre></td></tr></table></figure>
+<p>比如，对应上面package.json文件指定的模块，需要运行以下npm命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">npm install grunt --save-dev</div><div class="line">npm install grunt-contrib-jshint --save-dev</div><div class="line">npm install grunt-contrib-concat --save-dev</div><div class="line">npm install grunt-contrib-uglify --save-dev</div><div class="line">npm install grunt-contrib-watch --save-dev</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/06/22/grunt/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-06-15T14:32:00.000Z"><a href="/2014/06/15/js-parse-json/">Jun 15 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/06/15/js-parse-json/">js请求服务器返回JSON解析问题</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>体制问题，在目前这家公司一直搞后端，好久没写js没搞前后端交互了，还真有点想念啊，想念那两年开着多个浏览器挨个调试的日子。</p>
+<p>少扯两句，话入正题，今天朋友问一js解析问题，索性记录一下js通过 HTTP 请求加载远程数据，以及数据解析的相关问题。</p>
+<p>无论是同源请求实现异步操作，还是跨域请求获取第三方数据，js端请求加载远程数据通常是通过底层Ajax实现的，一般我们都是使用jQuery框架来直接请求，这里有<code>$.ajax(),$.post(),$.get(),$.getJson()</code>；个人比较喜欢用的是<code>$.ajax()</code>，因为它可以通过参数实现其它三种的所有功能，当然了，这里可以根据个人爱好和使用场景自由选择；这几个函数的详细区别(<a href="http://www.w3school.com.cn/jquery/jquery_ref_ajax.asp" target="_blank" rel="external">教程这里</a>)查看；</p>
+<p><strong>重点来了：</strong>两种解析方式</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/06/15/js-parse-json/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-06-09T13:00:56.000Z"><a href="/2014/06/09/google-not-access/">Jun 9 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/06/09/google-not-access/">Google无法访问，翻墙~~</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>不知道小伙伴们有没有注意到，从五月底开始，牛逼的Google就开始出现无法访问的现象，现如今还没有恢复。当然，这不是Google自己的原因，而是由于某方面的原因遭到国内的封杀，被墙了。呜呼哀哉，默哀～～～  </p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/06/09/google-not-access/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-06-03T14:11:00.000Z"><a href="/2014/06/03/duanwu_travels/">Jun 3 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/06/03/duanwu_travels/">端午游记</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>　　端午节和女友在杭州度过，第一次体验到了南方人民对于传统民俗节日的热爱；那份人人参与，齐心协力赛龙舟的场景深深把我震撼了，这让生长于北方的我感到很新鲜，涨了见识。</p>
+<p>　　<img src="http://iversong.qiniudn.com/duanwuIMG_1289.JPG?imageView/2/w/800/q/85" alt="齐心协力"></p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/06/03/duanwu_travels/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/" class="alignleft prev">上一页</a>
+  
+  
+    <a href="/page/3/" class="alignright next">下一页</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="/search/index.html" method="get" accept-charset="utf-8">
+    <input type="text" id="st-search-inpu" name="q" results="0" placeholder="search">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/IT杂谈/">IT杂谈</a><small>2</small></li>
+  
+    <li><a href="/categories/PHP/">PHP</a><small>1</small></li>
+  
+    <li><a href="/categories/产品运营/">产品运营</a><small>1</small></li>
+  
+    <li><a href="/categories/前端技术/">前端技术</a><small>4</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/生活/">生活</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/VPN代理/" style="font-size: 10px;">VPN代理</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/porxy/" style="font-size: 10px;">porxy</a> <a href="/tags/reactjs/" style="font-size: 10px;">reactjs</a> <a href="/tags/vagrant/" style="font-size: 10px;">vagrant</a> <a href="/tags/vps-运维/" style="font-size: 10px;">vps 运维</a> <a href="/tags/上网/" style="font-size: 10px;">上网</a> <a href="/tags/产品/" style="font-size: 10px;">产品</a> <a href="/tags/代理/" style="font-size: 10px;">代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/运营/" style="font-size: 10px;">运营</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2489146553&verifier=a63d6d67&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2017 Iversong , Powered by <a href="http://hexo.io/" target="_blank" title="hexo"> hexo </a>,
+  Theme of &nbsp; <a href="https://github.com/hexojs/hexo-theme-light" target="_blank" title="light">light</a>,
+  Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+  
+  <span>&nbsp;|&nbsp;</span>
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000455927'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1000455927%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+  _st('install','KmytTzhuzaxbwuTHpoeX');
+</script>
+
+  <a href="https://github.com/iversong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+</body>
+</html>

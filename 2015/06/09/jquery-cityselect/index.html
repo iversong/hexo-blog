@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="e59iH93PEC" />
+  
+  <title>jquery省市区三级联动 | Iversong&#39;s 个人日志</title>
+  <meta name="author" content="Iversong">
+  
+  <meta name="description" content="我是Iversong 这是我的个人博客 关注互联网 互联网产品 发表技术相关 生活相关文章 欢迎访问！">
+  
+  
+  <meta name="keywords" content="互联网 互联网金融 电子商务 IT技术">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="jquery省市区三级联动"/>
+  <meta property="og:site_name" content="Iversong&#39;s 个人日志"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Iversong&#39;s 个人日志" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Iversong&#39;s 个人日志</a></h1>
+  <h2><a href="/">Choose a life of action not one of ostentation</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">文章列表</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-06-09T08:00:30.000Z"><a href="/2015/06/09/jquery-cityselect/">Jun 9 2015</a></time>
+      
+      
+  
+    <h1 class="title">jquery省市区三级联动</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>忙碌的5月，度过了紧张的开发任务，终于可以喘口气休息一下了，借此机会也记录一下开发中用到的小工具-基于jquery的ajax省市区联动，数据可存到文件和数据库，比较方便顺手。</p>
+<p>数据跨域问题不方便上demo,直接贴插件代码，json数据文件放最后，可打包下载：</p>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo:"></a>demo:</h3><h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4><p>html中引入jquery和cityselect插件</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.js&quot;&gt;&lt;/script&gt; 
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.cityselect.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>定义三个select，class属性分别为prov、city、dist，表示省市区三个下拉框</p>
+<pre><code>&lt;div id=&quot;city&quot;&gt; 
+    &lt;select class=&quot;prov&quot;&gt;&lt;/select&gt;  
+    &lt;select class=&quot;city&quot; disabled=&quot;disabled&quot;&gt;&lt;/select&gt; 
+    &lt;select class=&quot;dist&quot; disabled=&quot;disabled&quot;&gt;&lt;/select&gt; 
+&lt;/div&gt;
+</code></pre><h4 id="Jquery调用"><a href="#Jquery调用" class="headerlink" title="Jquery调用"></a>Jquery调用</h4><pre><code>$(&quot;#city&quot;).citySelect();
+//或者自定义数据来源和初始化选择
+$(&quot;#city&quot;).citySelect({  
+    url:&quot;ajax.php/get_area&quot;,  
+    prov:&quot;浙江&quot;, //省份 
+    city:&quot;杭州&quot;, //城市 
+    dist:&quot;西湖区&quot;, //区县 
+    nodata:&quot;none&quot; //当子集无数据时，隐藏select 
+})
+</code></pre><a id="more"></a>
+<h4 id="ajax-php-get-area"><a href="#ajax-php-get-area" class="headerlink" title="ajax.php/get_area"></a>ajax.php/get_area</h4><pre><code>//取数据，建议缓存
+public function get_area(){
+    $this-&gt;load-&gt;library(&apos;dcache&apos;);
+     $this-&gt;dcache-&gt;set_dir(&quot;application&quot;);
+    $city_jsonlist = $this-&gt;dcache-&gt;get(&apos;city_jsonlist&apos;);
+    if ($city_jsonlist == false) {
+        $result = $this-&gt;db-&gt;select(&apos;no,name,pid,level&apos;)-&gt;from(&apos;areas&apos;)-&gt;get()-&gt;result_array();
+        $city_jsonlist = $this-&gt;get_area_json($result);
+        $this-&gt;dcache-&gt;set(&apos;city_jsonlist&apos;,$city_jsonlist);
+    }
+    $this-&gt;json_output(array(&apos;citylist&apos;=&gt;$city_jsonlist));
+}
+//数据递归格式化
+function get_area_json($alldata,$pid=0){
+    $list = array();
+    foreach ($alldata as $key =&gt; $item) {
+        if ($item[&apos;pid&apos;] == $pid) {
+            switch ($item[&apos;level&apos;]) {
+                case &apos;1&apos;:
+                    $item[&apos;p&apos;] = $item[&apos;name&apos;];
+                    $item[&apos;c&apos;] = $this-&gt;get_area_json($alldata,$item[&apos;no&apos;]);
+                    unset($item[&apos;name&apos;],$item[&apos;pid&apos;],$item[&apos;level&apos;]);
+                    break;
+                case &apos;2&apos;:
+                    $item[&apos;n&apos;] = $item[&apos;name&apos;];
+                    $item[&apos;a&apos;] = $this-&gt;get_area_json($alldata,$item[&apos;no&apos;]);
+                    unset($item[&apos;name&apos;],$item[&apos;pid&apos;],$item[&apos;level&apos;]);
+                    break;
+                case &apos;3&apos;:
+                    $item[&apos;s&apos;] = $item[&apos;name&apos;];
+                    unset($item[&apos;name&apos;],$item[&apos;pid&apos;],$item[&apos;level&apos;]);
+                    break;
+                default:
+                    $item[&apos;s&apos;] = $item[&apos;name&apos;];
+                    unset($item[&apos;name&apos;],$item[&apos;pid&apos;],$item[&apos;level&apos;]);
+                    break;
+            }
+            $list[] = $item;
+        }
+    }
+    return $list;
+}
+</code></pre><hr>
+<p><a href="http://pan.baidu.com/s/1bnyJz0j" target="_blank" rel="external">插件源码下载</a> 请放到web服务器环境下访问</p>
+<p>参考<a href="http://www.helloweba.com/view-blog-188.html" target="_blank" rel="external">基于jQuery+JSON的省市联动效果</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/前端技术/">前端技术</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/js/">js</a>, <a href="/tags/jquery/">jquery</a>, <a href="/tags/插件/">插件</a>
+  </div>
+
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="/search/index.html" method="get" accept-charset="utf-8">
+    <input type="text" id="st-search-inpu" name="q" results="0" placeholder="search">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/IT杂谈/">IT杂谈</a><small>2</small></li>
+  
+    <li><a href="/categories/PHP/">PHP</a><small>1</small></li>
+  
+    <li><a href="/categories/产品运营/">产品运营</a><small>1</small></li>
+  
+    <li><a href="/categories/前端技术/">前端技术</a><small>4</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/生活/">生活</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/VPN代理/" style="font-size: 10px;">VPN代理</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/porxy/" style="font-size: 10px;">porxy</a> <a href="/tags/reactjs/" style="font-size: 10px;">reactjs</a> <a href="/tags/vagrant/" style="font-size: 10px;">vagrant</a> <a href="/tags/vps-运维/" style="font-size: 10px;">vps 运维</a> <a href="/tags/上网/" style="font-size: 10px;">上网</a> <a href="/tags/产品/" style="font-size: 10px;">产品</a> <a href="/tags/代理/" style="font-size: 10px;">代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/运营/" style="font-size: 10px;">运营</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2489146553&verifier=a63d6d67&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2017 Iversong , Powered by <a href="http://hexo.io/" target="_blank" title="hexo"> hexo </a>,
+  Theme of &nbsp; <a href="https://github.com/hexojs/hexo-theme-light" target="_blank" title="light">light</a>,
+  Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+  
+  <span>&nbsp;|&nbsp;</span>
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000455927'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1000455927%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+  _st('install','KmytTzhuzaxbwuTHpoeX');
+</script>
+
+  <a href="https://github.com/iversong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+</body>
+</html>

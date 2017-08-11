@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="e59iH93PEC" />
+  
+  <title>VPS一键测试脚本bench.sh | Iversong&#39;s 个人日志</title>
+  <meta name="author" content="Iversong">
+  
+  <meta name="description" content="我是Iversong 这是我的个人博客 关注互联网 互联网产品 发表技术相关 生活相关文章 欢迎访问！">
+  
+  
+  <meta name="keywords" content="互联网 互联网金融 电子商务 IT技术">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="VPS一键测试脚本bench.sh"/>
+  <meta property="og:site_name" content="Iversong&#39;s 个人日志"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Iversong&#39;s 个人日志" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Iversong&#39;s 个人日志</a></h1>
+  <h2><a href="/">Choose a life of action not one of ostentation</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">文章列表</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2016-04-24T02:33:08.000Z"><a href="/2016/04/24/bench-sh/">Apr 24 2016</a></time>
+      
+      
+  
+    <h1 class="title">VPS一键测试脚本bench.sh</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>大家新买了VPS，免不了需要测试一下新VPS的性能，以前测试比较繁琐，显示结果也不直观。今天发现<a href="https://teddysun.com/" target="_blank" rel="external">秋水逸冰</a>的一键测试脚本bench.sh，特别转发过来。</p>
+</blockquote>
+<p>经过几个版本的演化，一键测试脚本 bench.sh 已经几乎全面适用于各种 Linux 发行版的网络（下行）和 IO 测试。并将测试结果以较为美观的方式显示出来。</p>
+<p><strong>总结一下 bench.sh 特点：</strong></p>
+<ol>
+<li>显示当前测试的各种系统信息；</li>
+<li>取自世界多处的知名数据中心的测试点，下载测试比较全面； </li>
+<li>支持 IPv6 下载测速； </li>
+<li>IO测试三次，并显示平均值。</li>
+</ol>
+<p>tips：配合 unixbench.sh 脚本测试，即可全面测试 VPS 的性能。</p>
+<p><strong>使用方法：</strong></p>
+<pre><code>命令1：
+wget -qO- bench.sh | bash
+或者
+curl -Lso- bench.sh | bash
+
+命令2：
+wget -qO- 86.re/bench.sh | bash
+或者
+curl -so- 86.re/bench.sh | bash
+</code></pre><a id="more"></a>
+<p><strong>备注：</strong><br>bench.sh 既是脚本名，同时又是域名。所以不要怀疑我写错了或者你看错了。</p>
+<p><strong>下载地址：</strong><br><a href="https://github.com/teddysun/across/blob/master/bench.sh" target="_blank" rel="external">https://github.com/teddysun/across/blob/master/bench.sh</a></p>
+<p>最后放几张测试图片。</p>
+<p><strong>BandwagonHost Los Angel</strong><br><img src="http://7fvkfx.com1.z0.glb.clouddn.com/speedtest_bwg.png" alt="BandwagonHost Los Angel"></p>
+<p><strong>DigitalOcean Singapore</strong><br><img src="http://7fvkfx.com1.z0.glb.clouddn.com/speedtest_do_sg.png" alt="DigitalOcean Singapore"></p>
+<p><strong>Ramnode Seattle</strong><br><img src="http://7fvkfx.com1.z0.glb.clouddn.com/speedtest_do_sg.png" alt="Ramnode Seattle"></p>
+<p><strong>Xvmlabs Los Angel</strong><br><img src="http://7fvkfx.com1.z0.glb.clouddn.com/speedtest_xvmlabs.png" alt="Xvmlabs Los Angel"></p>
+<p>原文链接：<a href="https://teddysun.com/444.html" target="_blank" rel="external">一键测试脚本bench.sh</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/vps-运维/">vps 运维</a>
+  </div>
+
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="/search/index.html" method="get" accept-charset="utf-8">
+    <input type="text" id="st-search-inpu" name="q" results="0" placeholder="search">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/IT杂谈/">IT杂谈</a><small>2</small></li>
+  
+    <li><a href="/categories/PHP/">PHP</a><small>1</small></li>
+  
+    <li><a href="/categories/产品运营/">产品运营</a><small>1</small></li>
+  
+    <li><a href="/categories/前端技术/">前端技术</a><small>4</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/生活/">生活</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/VPN代理/" style="font-size: 10px;">VPN代理</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/porxy/" style="font-size: 10px;">porxy</a> <a href="/tags/reactjs/" style="font-size: 10px;">reactjs</a> <a href="/tags/vagrant/" style="font-size: 10px;">vagrant</a> <a href="/tags/vps-运维/" style="font-size: 10px;">vps 运维</a> <a href="/tags/上网/" style="font-size: 10px;">上网</a> <a href="/tags/产品/" style="font-size: 10px;">产品</a> <a href="/tags/代理/" style="font-size: 10px;">代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/运营/" style="font-size: 10px;">运营</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2489146553&verifier=a63d6d67&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2017 Iversong , Powered by <a href="http://hexo.io/" target="_blank" title="hexo"> hexo </a>,
+  Theme of &nbsp; <a href="https://github.com/hexojs/hexo-theme-light" target="_blank" title="light">light</a>,
+  Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+  
+  <span>&nbsp;|&nbsp;</span>
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000455927'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1000455927%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+  _st('install','KmytTzhuzaxbwuTHpoeX');
+</script>
+
+  <a href="https://github.com/iversong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+</body>
+</html>

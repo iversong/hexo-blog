@@ -1,0 +1,831 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="e59iH93PEC" />
+  
+  <title>React 简单介绍 | Iversong&#39;s 个人日志</title>
+  <meta name="author" content="Iversong">
+  
+  <meta name="description" content="我是Iversong 这是我的个人博客 关注互联网 互联网产品 发表技术相关 生活相关文章 欢迎访问！">
+  
+  
+  <meta name="keywords" content="互联网 互联网金融 电子商务 IT技术">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="React 简单介绍"/>
+  <meta property="og:site_name" content="Iversong&#39;s 个人日志"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Iversong&#39;s 个人日志" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Iversong&#39;s 个人日志</a></h1>
+  <h2><a href="/">Choose a life of action not one of ostentation</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">文章列表</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-05-02T11:54:02.000Z"><a href="/2015/05/02/simple-react-desc/">May 2 2015</a></time>
+      
+      
+  
+    <h1 class="title">React 简单介绍</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>最近比较关注facebook出品的reactjs，虽然只是一个类库用来创建界面UI，但是他们提出的虚拟DOM可谓是颠覆传统和创新，模块化是前端的未来，创新能否推动工业化技术的发展，我们拭目以待，这篇文章来自<a href="http://www.alloyteam.com/2015/04/react-explore/" target="_blank" rel="external">腾讯全端团队</a>，认真拜读后感觉非常不错，摘来送给想了解React并且打算入门学习的朋友！</p>
+</blockquote>
+<p><strong>先说 React 与 React Native</strong></p>
+<p>他们是真的亲戚，可不像 Java 和 Javascript 一样。</p>
+<p>其实第一次看到 React 的语法我是拒绝的，因为这么丑的写法，你不能让我写我就写。</p>
+<p>但当我发现 React Native 横空出世后，它学习一次到处运行的理念非常诱人。React Native 可以写出原生体验的 iOS/Android 应用？那不就多了一门装逼技能？所以我们调研小组试了一下，感觉 “Duang” 一下，很爽很舒服。写 React Native 需要两门基础技能：React 语法 和 iOS 基础知识。</p>
+<p>很爽很舒服，索性就研究一下，算是入门。 了解之后发现，React 真是有另一番天地，值得学习。</p>
+<p>接下来总结以下我对 React 的理解，分享给大家。</p>
+<p>至于 React Native，有机会再好好探究下。</p>
+<p>这部分废话太多，喜欢实战的可以直接看代码部分。</p>
+<blockquote>
+<p>React 是 Facebook 出品的一套颠覆式的前端开发类库。</p>
+</blockquote>
+<p>为什么说它是颠覆式的呢？</p>
+<a id="more"></a>
+<p><strong>内存维护虚拟 DOM</strong></p>
+<p>对于传统的 DOM 维护，我们的步骤可能是：</p>
+<pre><code>1. 初始化 DOM 结构
+2. 从服务器获取新数据
+3. 使用新数据更新局部 DOM
+4. 绑定各种事件
+</code></pre><p>首先，我们操作 DOM 是最昂贵的开销，对于 需要反复更新 DOM 的网页，无疑是噩梦。其次，对 DOM 局部的更新以及事件绑定加大了维护的难度。</p>
+<p>而 React 引入了一个全新的概念：虚拟 DOM。</p>
+<p>虚拟 DOM 是躺在内存里的一种特殊的结构，我们可以理解为这是真实 DOM 在内存里的映射。</p>
+<p>除了结构上的映射外，这个虚拟的 DOM 还包括了渲染 真实所需要的数据以及事件绑定。</p>
+<p><strong>全量更新真实 DOM</strong></p>
+<p>虚拟 DOM 在创建时，首先是使用 JSX 的语法生成一个真实 DOM 树的映射，其次是从服务器端拉取远程数据，接着注入到这个虚拟 DOM 树中，同时绑定事件。</p>
+<p>好了，有了虚拟 DOM、数据、事件，万事俱备。</p>
+<p>接下来，调用 render() 方法一次性渲染出真实的 DOM，然后全量插入到网页中。</p>
+<p>虚拟 DOM 静静地躺在内存里，等待数据更新。</p>
+<p>新数据来临，调用 setState() 方法更新数据到虚拟 DOM 中，然后自动调用 render() 再一次性渲染出真实的 DOM ，然后全量更新到网页中。</p>
+<pre><code>一个虚拟 DOM，对应一个真实 DOM
+一份数据更新，重新生成虚拟 DOM ，全量更新真实 DOM
+</code></pre><p>就这么简单。 除了带来性能上的提升之外，很显然这种写法简化了我们维护 DOM 的成本 – 我们只需要维护一份数据。</p>
+<p><strong>只是 View，可配合其他类库使用</strong></p>
+<p>可以看到，React 里最重要的概念有虚拟 DOM、单向数据注入（虚拟 DOM 到真实 DOM）。 这里并没有引入太多其他的东西，所以我对 React 的理解是一个类库，而非框架。 如果要使用 MVC、MVVM 等技术的吧，完全可以把 React 当做其中的 V,即 View, 配合其他类库使用。</p>
+<p><strong>组件化</strong></p>
+<p>我虽然是个前端菜鸟，但日观天象也是能嗅到下一代 Web 将是组件化、组件复用共享的时代。</p>
+<p>React 编写起来，就是编写一个个的组件。</p>
+<p>我对一个 React 组件的理解是：</p>
+<pre><code>- 模板 HTML (JSX 语法格式)
+- 样式 CSS  (还是独立的样式文件)
+- 交互 JS   (与HTML一起，揉和到 JSX 语法中)
+</code></pre><p>以上三者可以打包复用，甚至是无缝接入，我脚得它就可能是未来了。</p>
+<p>HTML 与 JS 使用 JSX 语法糅合到一起的方式是见仁见智，恐怕会引起战争。</p>
+<p>我刚接触到 JSX 的时候，一开口也是『我*，好丑』。</p>
+<p>但慢慢地却发现，这种方式一开始写起来别扭，但用得却很爽。</p>
+<p>接下来，我通过编写一个简单的应用来入门 React。</p>
+<p>看完如果大呼不过瘾，建议直飞 React 官方看文档，那才是宝藏！</p>
+<p><strong>React 简单示例</strong></p>
+<p>示例代码放置在 <a href="https://github.com/laispace/react-explore/tree/master/demo" target="_blank" rel="external">demo/</a>目录下，每个文件夹为一个独立的示例。</p>
+<p>先看下这个 demo 最终的样子吧：</p>
+<p><a href="http://laispace.github.io/react-explore/demo/events/index.html" target="_blank" rel="external">demo - 速度与激情</a></p>
+<p>每个示例的入口文件 index.html 结构大体相同：</p>
+<pre><code>&lt;!-- React 真实 DOM 将会插入到这里 --&gt;
+&lt;div id=&quot;demo&quot;&gt;&lt;/div&gt;
+
+&lt;!-- 引入 React --&gt;
+&lt;script src=&quot;../../bower_components/react/react.js&quot;&gt;&lt;/script&gt;
+&lt;!-- 引入 JSX 语法格式转换器 --&gt;
+&lt;script src=&quot;../../bower_components/react/JSXTransformer.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- 注意：script 需要注明 type 为 text/jsx 以指定这是一个 JSX 语法格式 --&gt;
+&lt;script type=&quot;text/jsx&quot; src=&quot;demo.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre><p><strong>渲染一个虚拟 DOM 为真实 DOM</strong></p>
+<p>使用 render() 方法生成真实 DOM 并插入到网页中。</p>
+<pre><code>// 使用 React.createClass 创建一个组件
+var DemoComponent = React.createClass({
+    // 使用 render 方法自动渲染 DOM
+    render: function () {
+        return (
+            &lt;div className=&quot;component-hello&quot;&gt;
+                &lt;h1 className=&quot;hello-title&quot;&gt;Hello React&lt;/h1&gt;
+                &lt;p  className=&quot;hello-desc&quot;&gt;React 初探&lt;/p&gt;
+                &lt;div className=&quot;hello-movies&quot;&gt;
+                    &lt;p2&gt;我喜欢的电影&lt;/p2&gt;
+                    &lt;ul&gt;
+                        &lt;li className=&quot;movie-item&quot;&gt;
+                            &lt;span className=&quot;movie-name&quot;&gt;速度与激情7&lt;/span&gt;
+                            -
+                            &lt;span className=&quot;movie-date&quot;&gt;2015&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+});
+
+// 将组件插入到网页中指定的位置
+React.render(&lt;DemoComponent /&gt;, document.getElementById(&apos;demo&apos;));
+</code></pre><p><a href="http://laispace.github.io/react-explore/demo/render/" target="_blank" rel="external">在线演示 demo/render</a></p>
+<p><a href="https://github.com/laispace/react-explore/tree/master/demo/render/" target="_blank" rel="external">示例代码 demo/render</a></p>
+<p><strong>设置初始数据</strong></p>
+<p>第一次渲染真实 DOM 时将使用 getInitialState() 返回的数据。</p>
+<pre><code>// 使用 React.createClass 创建一个组件
+var DemoComponent = React.createClass({
+    // getInitialState 中返回的值将会作为数据的默认值
+    getInitialState: function () {
+        return {
+            title: &apos;我喜欢的电影&apos;,
+            movies: [
+                {
+                    id: 7,
+                    name: &apos;速度与激情7&apos;,
+                    date: 2015
+                },
+                {
+                    id: 6,
+                    name: &apos;速度与激情6&apos;,
+                    date: 2013
+                }
+            ]
+        }
+    },
+    // 使用 render 方法自动渲染 DOM
+    render: function () {
+        // this.state 用于存储数据
+        var title  = this.state.title;
+        var movies = this.state.movies.map(function (movie) {
+            return (
+                &lt;li className=&quot;movie-item&quot; key={movie.id}&gt;
+                    &lt;span className=&quot;movie-name&quot;&gt;{movie.name}&lt;/span&gt;
+                    -
+                    &lt;span className=&quot;movie-date&quot;&gt;{movie.date}&lt;/span&gt;
+                &lt;/li&gt;
+            )
+        });
+
+        return (
+            &lt;div className=&quot;component-hello&quot;&gt;
+                &lt;h1 className=&quot;hello-title&quot;&gt;Hello React&lt;/h1&gt;
+                &lt;p  className=&quot;hello-desc&quot;&gt;React 初探&lt;/p&gt;
+
+                &lt;div className=&quot;hello-movies&quot;&gt;
+                    &lt;p2&gt;{title}&lt;/p2&gt;
+                    &lt;ul&gt;{movies}&lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+});
+
+// 将组件插入到网页中指定的位置
+React.render(&lt;DemoComponent /&gt;, document.getElementById(&apos;demo&apos;));
+</code></pre><p><a href="http://laispace.github.io/react-explore/demo/get-initial-state/" target="_blank" rel="external">在线演示 demo/get-initial-state</a></p>
+<p><a href="https://github.com/laispace/react-explore/tree/master/demo/get-initial-state/" target="_blank" rel="external">示例代码 demo/get-initial-state</a></p>
+<p><strong>动态更新数据</strong></p>
+<p>第二次更新渲染真实 DOM 时将使用 setState() 设置的数据。</p>
+<pre><code>// 使用 componentDidMount 在组件初始化后执行一些操作
+    componentDidMount: function () {
+        // 拉取远程数据
+        // 开启假数据服务器：
+        // cd fake-server &amp;&amp; npm install &amp;&amp; node index.js
+        this.fetchData();
+    },
+
+    // 使用自定义的 fetchData 方法从远程服务器获取数据
+    fetchData: function () {
+        var self = this;
+        // 发起 ajax 获取到数据后调用 setState 方法更新组件的数据
+        var url = &apos;../../fake-data/movies.json&apos;;
+        $.getJSON(url, function (movies) {
+            // 本地模拟返回太快了，模拟一下网络延迟
+            setTimeout(function() {
+                self.setState({
+                    movies: movies
+                });
+            }, 2000);
+        });
+    },
+</code></pre><p><a href="http://laispace.github.io/react-explore/demo/set-state/" target="_blank" rel="external">在线演示 demo/set-state</a></p>
+<p><a href="https://github.com/laispace/react-explore/tree/master/demo/set-state/" target="_blank" rel="external">示例代码 demo/set-state</a></p>
+<p>绑定事件</p>
+<p>绑定事件时，我们可以使用 ref=”name” 属性对一个 DOM 节点进行标记，同时可以通过 React.findDOMNode(this.refs.name) 获取到这个节点的原生 DOM。</p>
+<pre><code>// 使用 render 方法自动渲染 DOM
+render: function () {
+    var self = this;
+    // this.state 用于存储数据
+    var title  = this.state.title;
+    var movies = this.state.movies.map(function (movie) {
+        return (
+            &lt;li className=&quot;movie-item&quot; key={movie.id}&gt;
+                &lt;span className=&quot;movie-name&quot;&gt;{movie.name}&lt;/span&gt;
+                -
+                &lt;span className=&quot;movie-date&quot;&gt;{movie.date}&lt;/span&gt;
+                &lt;a href=&quot;#&quot; onClick={self.onRemove.bind(null, movie)}&gt;删除&lt;/a&gt;
+            &lt;/li&gt;
+        )
+    }.bind(this));// 注意这里 bind(this) 修正了上下文
+
+    return (
+        &lt;div className=&quot;component-hello&quot;&gt;
+            &lt;h1 className=&quot;hello-title&quot;&gt;Hello React&lt;/h1&gt;
+            &lt;p  className=&quot;hello-desc&quot;&gt;React 初探&lt;/p&gt;
+
+            &lt;div className=&quot;hello-movies&quot;&gt;
+                &lt;p2&gt;{title}&lt;/p2&gt;
+                &lt;form onSubmit={this.onAdd}&gt;
+                    {/* 注意这里指定 ref 属性，然后我们就可以使用 this.refs.xxx 访问到 */}
+                    &lt;input type=&quot;text&quot; ref=&quot;name&quot; placehlder=&quot;输入你喜欢的电影&quot;/&gt;
+                    &lt;input type=&quot;text&quot; ref=&quot;date&quot; placeholder=&quot;上映时间&quot;/&gt;
+                    &lt;input type=&quot;submit&quot; value=&quot;提交&quot;/&gt;
+                &lt;/form&gt;
+                &lt;ul&gt;{movies}&lt;/ul&gt;
+                {this.state.loading ? &lt;div&gt;大家好我是菊花, 我现在在转&lt;/div&gt; : null}
+            &lt;/div&gt;
+        &lt;/div&gt;
+    )
+}
+
+onRemove: function (movie) {
+    var id = movie.id;
+    console.log(movie)
+    // 删除这个 item
+    var movies = this.state.movies;
+    var len = movies.length;
+    var index = -1;
+    for(var i = 0; i &lt; len; i++) {
+        var _movie = movies[i];
+        if (_movie.id === id) {
+            index = i;
+            break;
+        }
+    }
+    if (index &gt; 0) {
+        movies.splice(index, 1);
+        this.setState({
+            movies: movies
+        });
+    }
+},
+
+onAdd: function (e) {
+    e.preventDefault();
+    var refs = this.refs;
+    var refName = React.findDOMNode(refs.name);
+    var refDate = React.findDOMNode(refs.date);
+    if (refName.value === &apos;&apos;) {
+        alert(&apos;请输入电影名&apos;);
+        return;
+    } else if (refDate === &apos;&apos;) {
+        alert(&apos;请输入上映时间&apos;);
+        return;
+    }
+    var movie = {
+        // 使用 findDOMNode 获取到原生的 DOM 对象
+        name: refName.value,
+        date: refDate.value,
+        id: Date.now() // 粗暴地以时间数字作为随机 id
+    };
+
+    var movies = this.state.movies;
+    movies.push(movie);
+    this.setState(movies);
+
+    refName.value = &apos;&apos;;
+    refDate.value = &apos;&apos;;
+},
+</code></pre><p><a href="http://laispace.github.io/react-explore/demo/events/" target="_blank" rel="external">在线演示 demo/events</a></p>
+<p><a href="https://github.com/laispace/react-explore/tree/master/demo/events/" target="_blank" rel="external">示例代码 demo/events</a></p>
+<p><strong>多组件与组件嵌套</strong></p>
+<p>一个组件就包含了 JSX 模板、数据维护、事件绑定的话，代码量已经够多了，这时候可以采用 AMD/CMD 的方式，将组件进行更细粒度的划分，可以以文件即组件的方式来编写，这里就不上 demo 了。</p>
+<p><strong>组件间通信</strong></p>
+<p>在 React 中，数据流是单向的，且组件之间可以嵌套，我们可以通过对最顶层组件传递属性方式，向下层组件传送数据。</p>
+<ul>
+<li><p>嵌套组件间，使用 this.props 属性向下传递数据</p>
+</li>
+<li><p>独立组件之间，自行维护数据则需要自行维护一个全局数据存储，或者使用发布订阅地方式通知数据的更新。</p>
+</li>
+</ul>
+<p>全局数据存储怎么做呢？可以理解为不同的组件获取的数据源一致，在组件的外部维护这个数据集合，或者干脆直接从服务器端获取。</p>
+<p>有人会说了，这样很不方便。</p>
+<p>但我觉得，既然是一个组件，那就配套有获取组件所需数据的方式，独立组件间有很强的数据依赖时，要么使用上述方式，要么可以简单粗暴，将独立组件用一个顶层组件包裹起来，转化为嵌套组件的关系，即可数据互通。</p>
+<pre><code>// 将子组件抽离出来
+var LiWrapper = React.createClass({
+    render: function () {
+        // 使用 this.props 获得传入组件的数据
+        var movie = this.props.movie;
+        return (
+            &lt;li&gt;{/* ... */}&lt;/li&gt;
+        )
+    }
+});
+
+// 使用 React.createClass 创建一个组件
+var DemoComponent = React.createClass({
+    // 使用 getInitialState 的返回值作为数据的默认值
+    getInitialState: function () {
+      // ...
+    },
+
+    // 使用 render 方法自动渲染 DOM
+    render: function () {
+        // this.state 用于存储数据
+        var movies = this.state.movies.map(function (movie) {
+            return (
+               &lt;LiWrapper movie={movie}/&gt;
+            )
+        }.bind(this));// 注意这里 bind(this) 修正了上下文
+
+        return (
+            &lt;div className=&quot;component-hello&quot;&gt;
+                {/* ... */}
+                &lt;div className=&quot;hello-movies&quot;&gt;
+                    &lt;ul&gt;{movies}&lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+});
+
+// 将组件插入到网页中指定的位置
+// 在使用组件时传入 movies 数据
+var movies = [// ...];
+React.render(&lt;DemoComponent movies={movies}/&gt;,   
+document.getElementById(&apos;demo&apos;));
+</code></pre><p><a href="http://laispace.github.io/react-explore/demo/comunications/index1.html" target="_blank" rel="external">在线演示 demo/comunications</a></p>
+<p><a href="https://github.com/laispace/react-explore/tree/master/demo/comunications/" target="_blank" rel="external">示例代码 demo/comunications</a></p>
+<p><strong>打造丝滑的构建 使用 ES6 + gulp + webpack</strong></p>
+<p>ES6 和 gulp 的话就不多介绍啦。</p>
+<p>webpack 是一款新生的前端构建工具，兼容 AMD/CMD 等写法，支持 Browser 和 Node 端共享代码，在浏览器端可以像写 Node 一样方便的进行模块化的划分。</p>
+<p>在这里主要用 webpack 的两个插件：</p>
+<ul>
+<li><p>使用 jsx-loader 这个插件支持 jsx 语法解析</p>
+</li>
+<li><p>使用 esx-loader 这个插件支持 es6 语法解析</p>
+</li>
+</ul>
+<p>来看下简单目录结构：</p>
+<ul>
+<li><p>js/main.js 为入口文件，引入了两个组件。</p>
+<pre><code>var React = require(&apos;react&apos;);
+var MovieListComponent = require(&apos;./components/movie-list&apos;);
+var HelloMessageComponent = require(&apos;./components/hello&apos;);
+
+var movies = [
+    {
+        id: 5,
+        name: &apos;速度与激情5&apos;,
+        date: 2011
+    },
+    {
+        id: 4,
+        name: &apos;速度与激情4&apos;,
+        date: 2009
+    }
+];
+
+var wording = &apos;保罗&apos;;
+
+var MainComponent = React.createClass({
+    render: function () {
+        return (
+            &lt;div className=&quot;component-hello&quot;&gt;
+                &lt;HelloMessageComponent name={wording}/&gt;
+                &lt;MovieListComponent movies={movies} /&gt;
+            &lt;/div&gt;
+        )
+    }
+});
+React.render(&lt;MainComponent /&gt;,
+document.getElementById(&apos;demo&apos;));
+</code></pre></li>
+<li><p>js/components/movie-list.js 组件为 JSX 语法编写</p>
+<pre><code>var React = require(&apos;react&apos;);
+// 引入子组件
+var MovieComponent = require(&apos;./movie&apos;);
+
+// 使用 React.createClass 创建一个组件
+var MovieListComponent = React.createClass({
+    // 使用 getInitialState 的返回值作为数据的默认值
+    getInitialState: function () {
+        return {
+            loading: true,
+            title: &apos;我喜欢的电影&apos;,
+            // 注意这里将 外部传入的数据赋值给了 this.state
+            movies: []
+        }
+    },
+
+    // 使用 render 方法自动渲染 DOM
+    render: function () {
+        // this.state 用于存储数据
+        var title  = this.state.title;
+        // this.props 用于从组件外部传入数据
+        var movies = this.props.movies;
+        movies = movies.map(function (movie) {
+            return (
+                &lt;MovieComponent movie={movie}/&gt;
+            )
+        }.bind(this));// 注意这里 bind(this) 修正了上下文
+
+        return (
+            &lt;ul&gt;{movies}&lt;/ul&gt;
+        )
+    }
+});
+
+module.exports = MovieListComponent;
+</code></pre></li>
+<li><p>js/components/hello.js 组件为 ES6 + JSX 语法编写</p>
+<pre><code>var React = require(&apos;react&apos;);
+class HelloComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {wording: &apos;你好呀, &apos;};
+    }
+    render() {
+        return &lt;div&gt;{this.state.wording} {this.props.name}&lt;/div&gt;;
+    }
+}
+
+module.exports = HelloComponent;
+webpack.config.js 指定 jsx-loader 和 es6-loader
+module.exports = {
+    entry: [&apos;./js/main.js&apos;],
+    output: {
+        path: __dirname,
+        filename: &apos;js/bundle.js&apos;
+    },
+    module: {
+        loaders: [
+            { test: /\.js$/, loader: &apos;es6-loader&apos; },
+            { test: /\.js$/, loader: &apos;jsx-loader&apos; }
+        ]
+    }
+};
+gulpfile.js 在这里配置 webpack 任务，启动文件监听
+var gulp = require(&apos;gulp&apos;);
+var livereload = require(&apos;gulp-livereload&apos;);
+var webpack = require(&quot;gulp-webpack&quot;);
+
+var webpackConfig = require(&apos;./webpack.config&apos;);
+
+gulp.task(&quot;webpack&quot;, function() {
+    return gulp.src(&apos;./js/main.js&apos;)
+        .pipe(webpack(webpackConfig))
+        .pipe(gulp.dest(&apos;.&apos;));
+});
+
+gulp.task(&apos;watch&apos;, function() {
+    livereload.listen();
+    gulp.watch([&apos;js/**/*.js&apos;, &apos;!js/bundle.js&apos;], [&apos;webpack&apos;]);
+});
+
+gulp.task(&apos;default&apos;, [
+    &apos;webpack&apos;,
+    &apos;watch&apos;
+]);
+</code></pre></li>
+<li><p>index.html 示例页面，引入 webpack 打包后的 js/bundle.js</p>
+<pre><code>&lt;!-- React 真实 DOM 将会插入到这里 --&gt;
+&lt;div id=&quot;demo&quot;&gt;&lt;/div&gt;
+&lt;script src=&quot;./js/bundle.js&quot;&gt;&lt;/script&gt;
+</code></pre></li>
+</ul>
+<p>在 js/main.js 中引入两个不同的组件，然后在 webpack.config.js 中指定编译 JSX 和 ES6 的 loader 工具，使用 gulp 监听 js/ 中文件变化，自动编译出的 js/bundle.js 将被 index.html 引用。</p>
+<p>嗯，再在 webpack 中加入各种你喜欢的 loader，在 gulp 中加上各种 css、js、img 的处理任务，编写代码，自动重新编译，纵享丝滑。</p>
+<p><a href="https://github.com/laispace/react-explore/tree/master/demo/webpack/" target="_blank" rel="external">示例代码</a></p>
+<p><strong>零碎总结</strong></p>
+<p>文章到这里应该就算结束了，接下来是一些在学习过程中记下来的几个小点，也分享给大家。</p>
+<p><strong>简单理解 JSX 语法</strong></p>
+<p>JSX 把 JS 和 HTML 糅合起来了，这么理解是不是感觉比较简单：</p>
+<blockquote>
+<p>遇到 {} 包裹的是 JS，遇到 &lt;&gt; 包裹的是 HTML</p>
+</blockquote>
+<p><strong>render() 中 返回的的 JSX 模板需要一个根元素包裹起来</strong></p>
+<p>比如：</p>
+<pre><code>// 错误的写法
+var MyComponent = React.createClass({
+    render: function () {
+        return (
+            &lt;h1&gt;速度与激情7&lt;/h1&gt;
+            &lt;p&gt;致敬保罗&lt;/p&gt;
+        )
+    }
+});
+</code></pre><p>应该写成：</p>
+<pre><code>// 正确的写法
+var MyComponent = React.createClass({
+    render: function () {
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;速度与激情7&lt;/h1&gt;
+                &lt;p&gt;致敬保罗&lt;/p&gt;
+            &lt;/div&gt;
+        )
+    }
+});
+</code></pre><p><strong>几个重要方法</strong></p>
+<ul>
+<li>render() 返回的是一系列嵌套的组件 this.props 获取父组件传递给子组件的数据 this.setState({data: data}); 用于动态更新状态，设置数据（设置后UI会自动刷新）</li>
+<li>getInitialState() 在整个组件的生命周期中只会执行一次，用于初始化数据</li>
+<li>componentDidMount 会在 render 后自动调用，用于异步获取数据，更新数据</li>
+</ul>
+<p><strong>操作数据的流程</strong></p>
+<ul>
+<li>gitInitialState() 初始化数据</li>
+<li>render() 渲染初始化数据</li>
+<li>componentDidMount() 异步获取数据</li>
+<li>setState() 更新数据</li>
+</ul>
+<p><strong>理解一个组件的状态转换</strong></p>
+<p>每一个组件都可以理解为有一个简单的状态机。</p>
+<p>调用 setState(data, callback) 后，data 将会混入 this.state 中，数据得到了更新，render() 就会被调用，UI 就能被更新。</p>
+<p><strong>组件之间如何通信</strong></p>
+<pre><code>&lt;Parent&gt;&lt;Child /&gt;&lt;/Parent&gt;
+</code></pre><p>父组件可以获取到子组件：this.props.children</p>
+<p><strong>render() 永远不要手动调用</strong></p>
+<p>render() 在 React 创建时会调用一次，在数据更新时调用 setState() 方法则会继续调用它来更新网页中的真实 DOM。</p>
+<p><strong>使用 getInitial() 设置默认值</strong></p>
+<p>这个方法返回的值会在组件初始化第一次调用 render() 时就被使用</p>
+<p><strong>class 是关键字，改用 className</strong></p>
+<pre><code>// 错误的写法
+var MyComponent = React.createClass({
+    render: function () {
+        return (
+            &lt;div class=&quot;movie&quot;&gt;
+                &lt;h1&gt;速度与激情7&lt;/h1&gt;
+                &lt;p&gt;致敬保罗&lt;/p&gt;
+            &lt;/div&gt;
+        )
+    }
+});
+</code></pre><p>应该写成：</p>
+<pre><code>// 正确的写法
+var MyComponent = React.createClass({
+    render: function () {
+        return (
+            &lt;div className=&quot;movie&quot;&gt;
+                &lt;h1&gt;速度与激情7&lt;/h1&gt;
+                &lt;p&gt;致敬保罗&lt;/p&gt;
+            &lt;/div&gt;
+        )
+    }
+});
+</code></pre><p><strong>组件名大写，不然不被识别</strong></p>
+<pre><code>// 错误的写法
+var myComponent = React.createClass({
+    render: function () {
+        return (
+            &lt;div class=&quot;movie&quot;&gt;
+                &lt;h1&gt;速度与激情7&lt;/h1&gt;
+                &lt;p&gt;致敬保罗&lt;/p&gt;
+            &lt;/div&gt;
+        )
+    }
+});
+
+React.render(&lt;myComponent /&gt;,
+document.getElementById(&apos;demo&apos;));
+</code></pre><p>应该写成：</p>
+<pre><code>// 正确的写法
+var MyComponent = React.createClass({
+    render: function () {
+        return (
+            &lt;div className=&quot;movie&quot;&gt;
+                &lt;h1&gt;速度与激情7&lt;/h1&gt;
+                &lt;p&gt;致敬保罗&lt;/p&gt;
+            &lt;/div&gt;
+        )
+    }
+});
+
+React.render(&lt;MyComponent /&gt;,
+document.getElementById(&apos;demo&apos;));
+</code></pre><p><strong>怎么隐藏或显示菊花</strong></p>
+<pre><code>var MyComponent = React.createClass({
+    getInitial: function () {
+        loading: true
+    },
+    showLoading: function () {
+        this.setState({loading: true})
+    },
+    hideLoading: function () {
+        this.setState({loading: false})
+    },
+    render: function () {
+        return (
+            {
+                this.state.loading ? &lt;div&gt;大家好我是菊花，我在转&lt;/div&gt; : null
+            }
+        )
+    }
+});
+</code></pre><p><strong>插入原生的 HTML 片段的方式</strong></p>
+<p>React 会为我们过滤 XSS，要让一段 HTML 片段直接显示出来，需要这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div dangerouslySetInnerHTML=&#123; &#123; <span class="attr">__html</span>: <span class="string">'First &amp;middot; Second'</span> &#125; &#125; /&gt;</div></pre></td></tr></table></figure>
+<p><strong>让 React 支持移动触摸实践</strong></p>
+<pre><code>React.initializeTouchEvents(true);
+</code></pre><p><strong>处理表单</strong></p>
+<p>表单因为会因用户交互而变化，所以有特定的一些属性</p>
+<ul>
+<li>input 和 textarea 组件具有 value</li>
+<li>input[type=checkbox] 和 input[type=radio] 具有 checked</li>
+<li><p>option 具有 selected，如果要支持多选，可以传入数组：</p>
+<pre><code>&lt;select multiple={ true } value={ [&apos;B&apos;, &apos;C&apos;] }&gt;
+</code></pre></li>
+</ul>
+<p>表单项具有 onChange 事件</p>
+<p>注意如果这么写：</p>
+<pre><code>render: function() {
+    return &lt;input type=&quot;text&quot; value=&quot;Hello!&quot; /&gt;;
+}
+</code></pre><p>那每次 render 的时候 input 的 value 都会被重置为 “Hello!”，所以需要这么控制：</p>
+<pre><code>getInitialState: function() {
+    return {value: &apos;Hello!&apos;};
+},
+handleChange: function(event) {
+    this.setState({value: event.target.value});
+},
+render: function() {
+    var value = this.state.value;
+    return &lt;input type=&quot;text&quot; value={value}
+    onChange={this.handleChange} /&gt;;
+}
+</code></pre><p>利用这点，可以无缝地接入一些验证规则，比如限制文字为 140 字：</p>
+<pre><code>handleChange: function(event) {
+    this.setState({value: event.target.value.substr(0, 140)});
+}
+</code></pre><p>如果不想这么被控制呢？那就在返回 input 的时候，不要设置 value 属性，这样随着用户输入，value 不会被重置：</p>
+<pre><code>render: function() {
+    return &lt;input type=&quot;text&quot; /&gt;;
+}
+</code></pre><p>也可以设置默认值：</p>
+<pre><code>render: function() { return &lt;input type=&quot;text&quot;  defaultValue=&quot;Hello!&quot; /&gt;; }
+</code></pre><p>除了 <code>defaultValue</code> 之外，还支持 <code>defaultChecked</code></p>
+<h3 id="理解虚拟-DOM"><a href="#理解虚拟-DOM" class="headerlink" title="理解虚拟 DOM"></a>理解虚拟 DOM</h3><p>React 会在内存里维护一个代表 DOM  的结构，调用<br>render 方法时才生成真正的 DOM 插入到网页中。</p>
+<h3 id="理解组件的生命周期"><a href="#理解组件的生命周期" class="headerlink" title="理解组件的生命周期"></a>理解组件的生命周期</h3><p>一个组件的声明周期可以理解为三个阶段：</p>
+<ol>
+<li>mounting     组件正在插入到 DOM 中</li>
+<li>updating     组件正在重新注入新数据后更新到 DOM 中</li>
+<li>unmounting 组件从 DOM 中移除</li>
+</ol>
+<p><strong>mounting 阶段</strong></p>
+<ul>
+<li><p>getInitialState() 被调用，返回原始数据</p>
+</li>
+<li><p>componentWillMount() 在组件 mounting 前调用</p>
+</li>
+<li><p>componentDidMount() 在组件 mounting 完成后调用</p>
+</li>
+</ul>
+<p><strong>updating 阶段</strong></p>
+<ul>
+<li>componentWillReceiveProps(nextProps) 在接收到新的 props 时调用</li>
+<li>shouldComponentUpdate(nextProps, nextState) 在组件需要更新 DOM 时调用，若这个函数返回 false 则告诉 React 不要更新</li>
+<li>componentWillUpdate(nextProps, nextState) 在更新发生时调用，可以在这里调用 this.steState() 刷新数据</li>
+<li>componentDidUpdate(prevProps, prevState) 在更新完成后调用</li>
+</ul>
+<p><strong>unmounting 阶段</strong></p>
+<ul>
+<li>componentWillUnmount() 在组件移除时被调用，在这里可以对数据进行清理</li>
+</ul>
+<h3 id="强制使用数据更新组件"><a href="#强制使用数据更新组件" class="headerlink" title="强制使用数据更新组件"></a>强制使用数据更新组件</h3><p>forceUpdate() 强制使用数据更新组件，而不用调用 this.setState()</p>
+<h3 id="获取原生-DOM-元素"><a href="#获取原生-DOM-元素" class="headerlink" title="获取原生 DOM 元素"></a>获取原生 DOM 元素</h3><p><code>React.findDOMNode(component)</code> 返回原生的 DOM 元素<br>注意要获取原生的 DOM 元素，必须在 render 被调用， 真正的 DOM 已经被插入到页面中时。</p>
+<h3 id="理解-refs"><a href="#理解-refs" class="headerlink" title="理解 refs"></a>理解 refs</h3><p>可以把 refs 理解为我们在 HTML 中的id，用于定位到指定的组件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;form onSubmit=&#123;<span class="keyword">this</span>.onAdd&#125;&gt; </div><div class="line">    &#123;<span class="comment">/* 注意这里指定 ref 属性，然后我们就可以使用 this.refs.xxx 访问到 */</span>&#125; </div><div class="line">    &lt;input type=<span class="string">"text"</span> ref=<span class="string">"name"</span> placehlder=<span class="string">"输入你喜欢的电影"</span>/&gt; </div><div class="line">    &lt;input type=<span class="string">"text"</span> ref=<span class="string">"date"</span> placeholder=<span class="string">"上映时间"</span>/&gt; </div><div class="line">    &lt;input type=<span class="string">"submit"</span> value=<span class="string">"提交"</span>/&gt; </div><div class="line">&lt;<span class="regexp">/form&gt;</span></div></pre></td></tr></table></figure>
+<p>ref 属性可以是一个回调函数而不是名字，这个回调会在组件 mounted 后被调用。回调函数使用被引用的组件作为参数。<br><code>&lt;input ref={ function(component){ React.findDOMNode(component).focus();} } /&gt;</code> 注意不要在 render 方法中访问 refs 属性。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/前端技术/">前端技术</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/js/">js</a>, <a href="/tags/facebook/">facebook</a>, <a href="/tags/reactjs/">reactjs</a>
+  </div>
+
+        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="/search/index.html" method="get" accept-charset="utf-8">
+    <input type="text" id="st-search-inpu" name="q" results="0" placeholder="search">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/IT杂谈/">IT杂谈</a><small>2</small></li>
+  
+    <li><a href="/categories/PHP/">PHP</a><small>1</small></li>
+  
+    <li><a href="/categories/产品运营/">产品运营</a><small>1</small></li>
+  
+    <li><a href="/categories/前端技术/">前端技术</a><small>4</small></li>
+  
+    <li><a href="/categories/开发工具/">开发工具</a><small>1</small></li>
+  
+    <li><a href="/categories/生活/">生活</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/VPN代理/" style="font-size: 10px;">VPN代理</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/porxy/" style="font-size: 10px;">porxy</a> <a href="/tags/reactjs/" style="font-size: 10px;">reactjs</a> <a href="/tags/vagrant/" style="font-size: 10px;">vagrant</a> <a href="/tags/vps-运维/" style="font-size: 10px;">vps 运维</a> <a href="/tags/上网/" style="font-size: 10px;">上网</a> <a href="/tags/产品/" style="font-size: 10px;">产品</a> <a href="/tags/代理/" style="font-size: 10px;">代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/运营/" style="font-size: 10px;">运营</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+  </div>
+</div>
+
+
+  <iframe width="100%" height="500" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=500&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=2489146553&verifier=a63d6d67&dpc=1"></iframe>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2017 Iversong , Powered by <a href="http://hexo.io/" target="_blank" title="hexo"> hexo </a>,
+  Theme of &nbsp; <a href="https://github.com/hexojs/hexo-theme-light" target="_blank" title="light">light</a>,
+  Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+  
+  <span>&nbsp;|&nbsp;</span>
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000455927'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1000455927%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+<div class="clearfix"></div></footer>
+  <script src="http://libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+  _st('install','KmytTzhuzaxbwuTHpoeX');
+</script>
+
+  <a href="https://github.com/iversong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
+</body>
+</html>
