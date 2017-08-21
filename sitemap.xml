@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.iversong.com/2017/08/21/create-react-native-app/</loc>
+    
+    <lastmod>2017-08-21T08:07:53.307Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.iversong.com/2017/08/11/react-react-native-%E5%85%A5%E5%9D%91/</loc>
     
     <lastmod>2017-08-11T03:14:42.179Z</lastmod>
@@ -30,14 +37,14 @@
   </url>
   
   <url>
-    <loc>http://www.iversong.com/2015/05/02/simple-react-desc/</loc>
+    <loc>http://www.iversong.com/2015/04/20/vagrant-dev-env/</loc>
     
     <lastmod>2017-08-11T01:32:44.580Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.iversong.com/2015/04/20/vagrant-dev-env/</loc>
+    <loc>http://www.iversong.com/2015/05/02/simple-react-desc/</loc>
     
     <lastmod>2017-08-11T01:32:44.580Z</lastmod>
     
@@ -51,14 +58,14 @@
   </url>
   
   <url>
-    <loc>http://www.iversong.com/2016/08/30/learn-docker/</loc>
+    <loc>http://www.iversong.com/2014/05/29/open-speed-slow/</loc>
     
     <lastmod>2017-08-11T01:32:44.579Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.iversong.com/2014/05/29/open-speed-slow/</loc>
+    <loc>http://www.iversong.com/2016/08/30/learn-docker/</loc>
     
     <lastmod>2017-08-11T01:32:44.579Z</lastmod>
     
@@ -79,7 +86,7 @@
   </url>
   
   <url>
-    <loc>http://www.iversong.com/2014/06/09/google-not-access/</loc>
+    <loc>http://www.iversong.com/2014/06/22/grunt/</loc>
     
     <lastmod>2017-08-11T01:32:44.578Z</lastmod>
     
@@ -93,21 +100,21 @@
   </url>
   
   <url>
-    <loc>http://www.iversong.com/2014/06/22/grunt/</loc>
+    <loc>http://www.iversong.com/2014/06/09/google-not-access/</loc>
     
     <lastmod>2017-08-11T01:32:44.578Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.iversong.com/2016/04/24/bench-sh/</loc>
+    <loc>http://www.iversong.com/2014/06/03/duanwu_travels/</loc>
     
     <lastmod>2017-08-11T01:32:44.577Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.iversong.com/2014/06/03/duanwu_travels/</loc>
+    <loc>http://www.iversong.com/2016/04/24/bench-sh/</loc>
     
     <lastmod>2017-08-11T01:32:44.577Z</lastmod>
     
