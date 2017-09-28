@@ -55,6 +55,44 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-06-15T14:32:00.000Z"><a href="/2014/06/15/js-parse-json/">Jun 15 2014</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2014/06/15/js-parse-json/">js请求服务器返回JSON解析问题</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>体制问题，在目前这家公司一直搞后端，好久没写js没搞前后端交互了，还真有点想念啊，想念那两年开着多个浏览器挨个调试的日子。</p>
+<p>少扯两句，话入正题，今天朋友问一js解析问题，索性记录一下js通过 HTTP 请求加载远程数据，以及数据解析的相关问题。</p>
+<p>无论是同源请求实现异步操作，还是跨域请求获取第三方数据，js端请求加载远程数据通常是通过底层Ajax实现的，一般我们都是使用jQuery框架来直接请求，这里有<code>$.ajax(),$.post(),$.get(),$.getJson()</code>；个人比较喜欢用的是<code>$.ajax()</code>，因为它可以通过参数实现其它三种的所有功能，当然了，这里可以根据个人爱好和使用场景自由选择；这几个函数的详细区别(<a href="http://www.w3school.com.cn/jquery/jquery_ref_ajax.asp" target="_blank" rel="external">教程这里</a>)查看；</p>
+<p><strong>重点来了：</strong>两种解析方式</p>
+      
+    </div>
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/06/15/js-parse-json/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-06-09T13:00:56.000Z"><a href="/2014/06/09/google-not-access/">Jun 9 2014</a></time>
       
       
@@ -244,7 +282,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/VPN代理/" style="font-size: 10px;">VPN代理</a> <a href="/tags/create-react-native-app-react-native/" style="font-size: 10px;">create-react-native-app react-native</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/porxy/" style="font-size: 10px;">porxy</a> <a href="/tags/react-react-native/" style="font-size: 10px;">react react-native</a> <a href="/tags/reactjs/" style="font-size: 10px;">reactjs</a> <a href="/tags/vagrant/" style="font-size: 10px;">vagrant</a> <a href="/tags/vps-运维/" style="font-size: 10px;">vps 运维</a> <a href="/tags/上网/" style="font-size: 10px;">上网</a> <a href="/tags/产品/" style="font-size: 10px;">产品</a> <a href="/tags/代理/" style="font-size: 10px;">代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/运营/" style="font-size: 10px;">运营</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/VPN代理/" style="font-size: 10px;">VPN代理</a> <a href="/tags/create-react-native-app-react-native/" style="font-size: 10px;">create-react-native-app react-native</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/facebook/" style="font-size: 10px;">facebook</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/nodejs-前后端分离-微服务/" style="font-size: 10px;">nodejs 前后端分离 微服务</a> <a href="/tags/porxy/" style="font-size: 10px;">porxy</a> <a href="/tags/react-react-native/" style="font-size: 10px;">react react-native</a> <a href="/tags/reactjs/" style="font-size: 10px;">reactjs</a> <a href="/tags/vagrant/" style="font-size: 10px;">vagrant</a> <a href="/tags/vps-运维/" style="font-size: 10px;">vps 运维</a> <a href="/tags/上网/" style="font-size: 10px;">上网</a> <a href="/tags/产品/" style="font-size: 10px;">产品</a> <a href="/tags/代理/" style="font-size: 10px;">代理</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/生活/" style="font-size: 10px;">生活</a> <a href="/tags/科学上网/" style="font-size: 10px;">科学上网</a> <a href="/tags/翻墙/" style="font-size: 10px;">翻墙</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/运营/" style="font-size: 10px;">运营</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
   </div>
 </div>
 
